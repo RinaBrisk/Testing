@@ -16,12 +16,18 @@ public class WebTests extends BaseRunner{
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Ссылка на ваш профиль в соцсетях или портфолио'])[1]/following::div[6]")).click();
         driver.findElement(By.cssSelector("svg.ui-icon-checkbox.ui-checkbox__icon")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='условиями передачи информации'])[1]/following::div[1]")).click();
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фамилия и имя'])[1]/following::div[2]")).getText());
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дата рождения'])[1]/following::div[3]")).getText());
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Город проживания'])[1]/following::div[3]")).getText());
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Электронная почта'])[1]/following::div[2]")).getText());
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мобильный телефон'])[1]/following::div[2]")).getText());
-        assertEquals("Поле обязательное", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Загрузите резюме/портфолио'])[1]/following::div[1]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фамилия и имя'])[1]/following::div[2]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дата рождения'])[1]/following::div[3]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Город проживания'])[1]/following::div[3]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Электронная почта'])[1]/following::div[2]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мобильный телефон'])[1]/following::div[2]")).getText());
+        assertEquals("Поле обязательное", driver.findElement(
+                By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Загрузите резюме/портфолио'])[1]/following::div[1]")).getText());
     }
 }
 

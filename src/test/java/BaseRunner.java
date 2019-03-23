@@ -12,8 +12,8 @@ public class BaseRunner {
 
     @Before
     public void setUp(){
-        // driver = new FirefoxDriver();
-        driver = new ChromeDriver();
+        driver = BrowsersFactory.firefox.create();
+       // driver = BrowsersFactory.chrome.create();
         driver.manage().window().maximize();
         baseUrl = "https://www.tinkoff.ru/career/vacancies/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
