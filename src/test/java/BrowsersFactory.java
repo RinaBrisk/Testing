@@ -3,8 +3,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.opera.OperaDriver;
 
-public enum  BrowsersFactory {
+public enum BrowsersFactory {
     chrome {
         public WebDriver create() {
             updateProperty("chrome");
@@ -22,7 +23,16 @@ public enum  BrowsersFactory {
             options.addPreference("dom.webnotifications.enabled", false);
             return new FirefoxDriver();
         }
+    },
+    opera {
+        public WebDriver create() {
+            updateProperty("opera");
+            System.setProperty("webdriver.opera.driver","C:\\DRIVERS\\operadriver\\operadriver.exe");
+            System.setProperty("opera.binary","C:\\Program Files (x86)\\Opera\\launcher.exe");
+            return new OperaDriver();
+        }
     };
+
 
     public WebDriver create() {
         return null;
