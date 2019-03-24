@@ -6,7 +6,7 @@ Testing
 **Второй тест(testInvalidValue)** проверяет появление сообщений об ошибках при введении некорректных значений в поля ввода данных.
 Для запуска тестов перейдите в командной строке в корень проекта и введите:
 ```
-mvn test -Dbrowser=**browserName** verify
+mvn test -Dbrowser=browserName verify
 ```
 browserName может принимать значения: firefix, chrome, opera
 
