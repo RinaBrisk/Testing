@@ -12,5 +12,6 @@ Testing
 ```
 mvn test -Dbrowser=browserName verify
 ```
-browserName может принимать значения: firefix, chrome, opera
+browserName может принимать значения: firefox, chrome, opera.
+Браузер по умолчанию: firefox.
 
