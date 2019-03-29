@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
@@ -32,13 +31,8 @@ public class BaseRunner {
         try {
             BrowsersFactory.valueOf(System.getProperty("browser"));
         } catch (NullPointerException | IllegalArgumentException e) {
-            browserName = "firefox";
+            browserName = "chrome";
         }
         return BrowsersFactory.valueOf(browserName).create();
-    }
-
-    @After
-    public void tearDown(){
-  //      driver.quit();
     }
 }
