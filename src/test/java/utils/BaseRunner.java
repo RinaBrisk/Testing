@@ -1,5 +1,8 @@
+package utils;
+
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -7,8 +10,8 @@ public class BaseRunner {
 
     private static ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
     private String browserName = System.getProperty("browser");
-    WebDriver driver;
-    String baseUrl;
+    protected static WebDriver driver;
+    protected WebDriverWait wait;
 
     @Before
     public void setUp(){
@@ -18,8 +21,8 @@ public class BaseRunner {
             driver = getDriver();
             threadLocal.set(driver);
         }
+        wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
-        baseUrl = "https://www.tinkoff.ru/career/vacancies/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             driver.quit();
