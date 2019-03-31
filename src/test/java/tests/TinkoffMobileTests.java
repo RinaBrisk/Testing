@@ -1,14 +1,10 @@
 package tests;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import utils.BaseRunner;
-import utils.CheckBox;
-import utils.Helper;
-import utils.Select;
+import utils.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -140,35 +136,37 @@ public class TinkoffMobileTests extends BaseRunner {
         driver.get(URL_TARIFFS);
         driver.manage().timeouts().setScriptTimeout(4, TimeUnit.SECONDS);
         Select select = new Select();
-        select.valueChoice(driver, "Интернет", "0 ГБ");
-        select.valueChoice(driver, "Звонки", "0 минут");
+        wait.until(d -> select.valueChoice("Интернет", "0 ГБ").equals("0 ГБ"));
+        wait.until(d -> select.valueChoice( "Звонки", "0 минут").equals("0 минут"));
 
         CheckBox checkBox = new CheckBox();
-        checkBox.doSelectedOrDeselected(driver, "Мессенджеры (59 ₽)");
-        checkBox.doSelectedOrDeselected(driver, "Социальные сети (59 ₽)");
+        checkBox.doSelectedOrDeselected("Мессенджеры (59 ₽)");
+        checkBox.doSelectedOrDeselected("Социальные сети (59 ₽)");
 
         String price = driver.findElement(By.xpath("//h3")).getText();
         wait.until(d -> price.equals("Общая цена: 0 ₽"));
 
-        driver.findElement(By.xpath("//div[contains(@class,'LoaderRound__container_coverParent_2-_fi')]")).click();
-        Assert.assertEquals("Укажите ваше ФИО", driver.findElement(
-                By.xpath("//div[contains(@class, 'ui-form__row_dropdownFIO')]//div[contains(@class, 'ui-form-field-error-message')]")).getText());
+        TextInput textInput = new TextInput();
+        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Фамилия, имя и отчество']/../../input", "Сергеева Рина").equals("Сергеева Рина"));
+        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Контактный телефон']/../../input[@name='phone_mobile']", "9009090909").equals("+7(900) 909-09-09"));
+
+        Button button = new Button();
+        button.click("Заказать сим-карту");
+        wait.until(d -> {
+            boolean check = false;
+            WebElement el = driver.findElement(By.xpath("//div[contains(@class, 'UIAppointment__container_3A8ha UIAppointment__container_highlighted_3lFo8')]"));
+            if(el.isDisplayed()) check = true;
+            return check;
+        });
     }
 
     private void setMaxPackets() {
         Select select = new Select();
-        if(!select.valueChoice(driver, "Интернет", "Безлимитный интернет")) {
-            select.valueChoice(driver, "Интернет", "Безлимитный интернет");
-        }
-        select.valueChoice(driver, "Звонки", "Безлимитные минуты");
+        wait.until(d -> select.valueChoice("Интернет", "Безлимитный интернет").equals("Безлимитный интернет"));
+        wait.until(d -> select.valueChoice("Звонки", "Безлимитные минуты").equals("Безлимитные минуты"));
 
         CheckBox checkBox = new CheckBox();
-        checkBox.doSelectedOrDeselected(driver, "Режим модема (499 ₽)");
-       // if(!checkBox.getStatus(driver, "Режим модема (499 ₽)"))
-       //     System.out.println("Error. The checkbox  'Режим модема (499 р)' has not been changed");
-        checkBox.doSelectedOrDeselected(driver, "Безлимитные СМС (49 ₽)");
-       // if(!checkBox.getStatus(driver, "Безлимитные СМС (49 ₽)"))
-       //     System.out.println("Error. The checkbox  'Безлимитные СМС (49 р)' has not been changed");
-
+        checkBox.doSelectedOrDeselected("Режим модема (499 ₽)");
+        checkBox.doSelectedOrDeselected("Безлимитные СМС (49 ₽)");
     }
 }
