@@ -21,7 +21,7 @@ public class BaseRunner {
             driver = getDriver();
             threadLocal.set(driver);
         }
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 15);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
