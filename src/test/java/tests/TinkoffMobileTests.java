@@ -5,9 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.BaseRunner;
+import utils.CheckBox;
 import utils.Helper;
 import utils.Select;
 
@@ -144,11 +143,12 @@ public class TinkoffMobileTests extends BaseRunner {
         select.valueChoice(driver, "Интернет", "0 ГБ");
         select.valueChoice(driver, "Звонки", "0 минут");
 
-        driver.findElement(By.xpath("//label[text()='Мессенджеры (59 \u20BD)']/../div")).click();
-        driver.findElement(By.xpath("//label[text()='Социальные сети (59 \u20BD)']/../div")).click();
+        CheckBox checkBox = new CheckBox();
+        checkBox.doSelectedOrDeselected(driver, "Мессенджеры (59 ₽)");
+        checkBox.doSelectedOrDeselected(driver, "Социальные сети (59 ₽)");
 
         String price = driver.findElement(By.xpath("//h3")).getText();
-        wait.until(d -> price.equals("Общая цена: 0 \u20BD"));
+        wait.until(d -> price.equals("Общая цена: 0 ₽"));
 
         driver.findElement(By.xpath("//div[contains(@class,'LoaderRound__container_coverParent_2-_fi')]")).click();
         Assert.assertEquals("Укажите ваше ФИО", driver.findElement(
@@ -162,7 +162,13 @@ public class TinkoffMobileTests extends BaseRunner {
         }
         select.valueChoice(driver, "Звонки", "Безлимитные минуты");
 
-        driver.findElement(By.xpath("//label[text()='Режим модема (499 \u20BD)']/../div")).click();
-        driver.findElement(By.xpath("//label[text()='Безлимитные СМС (49 \u20BD)']/../div")).click();
+        CheckBox checkBox = new CheckBox();
+        checkBox.doSelectedOrDeselected(driver, "Режим модема (499 ₽)");
+       // if(!checkBox.getStatus(driver, "Режим модема (499 ₽)"))
+       //     System.out.println("Error. The checkbox  'Режим модема (499 р)' has not been changed");
+        checkBox.doSelectedOrDeselected(driver, "Безлимитные СМС (49 ₽)");
+       // if(!checkBox.getStatus(driver, "Безлимитные СМС (49 ₽)"))
+       //     System.out.println("Error. The checkbox  'Безлимитные СМС (49 р)' has not been changed");
+
     }
 }
