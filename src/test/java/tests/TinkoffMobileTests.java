@@ -4,16 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import utils.BaseRunner;
 import utils.Helper;
+import utils.Select;
 
-import javax.xml.bind.Element;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -140,18 +137,12 @@ public class TinkoffMobileTests extends BaseRunner {
     }
 
     @Test
-    public void ActiveButton() {
+    public void activeButton() {
         driver.get(URL_TARIFFS);
         driver.manage().timeouts().setScriptTimeout(4, TimeUnit.SECONDS);
-        Actions actionsInternet = new Actions(driver);
-        actionsInternet.click(driver.findElement(By.xpath("//div[@class='ui-select_close ui-select_changed']" +
-                "//span[text()='Интернет']/../../div[@class='ui-select__additional']"))).perform();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='0 ГБ']/.."))).click();
-
-        Actions actionsCall = new Actions(driver);
-        actionsCall.click(driver.findElement(By.xpath("//div[@class='ui-select_close ui-select_changed']" +
-                "//span[text()='Звонки']/../../div[@class='ui-select__additional']"))).perform();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='0 минут']/.."))).click();
+        Select select = new Select();
+        select.valueChoice(driver, "Интернет", "0 ГБ");
+        select.valueChoice(driver, "Звонки", "0 минут");
 
         driver.findElement(By.xpath("//label[text()='Мессенджеры (59 \u20BD)']/../div")).click();
         driver.findElement(By.xpath("//label[text()='Социальные сети (59 \u20BD)']/../div")).click();
@@ -165,16 +156,11 @@ public class TinkoffMobileTests extends BaseRunner {
     }
 
     private void setMaxPackets() {
-
-        Actions actionsInternet = new Actions(driver);
-        actionsInternet.click(driver.findElement(By.xpath("//div[@class='ui-select_close ui-select_changed']" +
-                "//span[text()='Интернет']/../../div[@class='ui-select__additional']")))
-                .click(driver.findElement(By.xpath("//span[text()='Безлимитный интернет']/..")))
-                .perform();
-
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='ui-select_close ui-select_changed']" +
-                 "//span[text()='Звонки']/../../div[@class='ui-select__additional']"))).click();
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Безлимитные минуты']/.."))).click();
+        Select select = new Select();
+        if(!select.valueChoice(driver, "Интернет", "Безлимитный интернет")) {
+            select.valueChoice(driver, "Интернет", "Безлимитный интернет");
+        }
+        select.valueChoice(driver, "Звонки", "Безлимитные минуты");
 
         driver.findElement(By.xpath("//label[text()='Режим модема (499 \u20BD)']/../div")).click();
         driver.findElement(By.xpath("//label[text()='Безлимитные СМС (49 \u20BD)']/../div")).click();
