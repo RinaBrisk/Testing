@@ -140,15 +140,15 @@ public class TinkoffMobileTests extends BaseRunner {
         wait.until(d -> select.valueChoice( "Звонки", "0 минут").equals("0 минут"));
 
         CheckBox checkBox = new CheckBox();
-        checkBox.doSelectedOrDeselected("Мессенджеры (59 ₽)");
-        checkBox.doSelectedOrDeselected("Социальные сети (59 ₽)");
+        checkBox.click("Мессенджеры (59 ₽)");
+        checkBox.click("Социальные сети (59 ₽)");
 
         String price = driver.findElement(By.xpath("//h3")).getText();
         wait.until(d -> price.equals("Общая цена: 0 ₽"));
 
         TextInput textInput = new TextInput();
-        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Фамилия, имя и отчество']/../../input", "Сергеева Рина").equals("Сергеева Рина"));
-        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Контактный телефон']/../../input[@name='phone_mobile']", "9009090909").equals("+7(900) 909-09-09"));
+        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Фамилия, имя и отчество']/parent::span/parent::div/input", "Сергеева Рина").equals("Сергеева Рина"));
+        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Контактный телефон']/parent::span/parent::div/input[@name='phone_mobile']", "9009090909").equals("+7(900) 909-09-09"));
 
         Button button = new Button();
         button.click("Заказать сим-карту");
@@ -166,7 +166,7 @@ public class TinkoffMobileTests extends BaseRunner {
         wait.until(d -> select.valueChoice("Звонки", "Безлимитные минуты").equals("Безлимитные минуты"));
 
         CheckBox checkBox = new CheckBox();
-        checkBox.doSelectedOrDeselected("Режим модема (499 ₽)");
-        checkBox.doSelectedOrDeselected("Безлимитные СМС (49 ₽)");
+        checkBox.click("Режим модема (499 ₽)");
+        checkBox.click("Безлимитные СМС (49 ₽)");
     }
 }
