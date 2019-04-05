@@ -8,22 +8,42 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 class BrowsersFactory {
 
     public static class MyListener extends AbstractWebDriverEventListener {
 
+        private Logger logger = LoggerFactory.getLogger(BrowsersFactory.class);
+
         @Override
         public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-            System.out.println("Обращение к элементу " + by);
+            logger.info("Обращение к элементу " + by);
         }
 
         @Override
         public void afterFindBy(By by, WebElement element, WebDriver driver) {
-            System.out.println("Найден элемент " + by);
+            logger.info("Найден элемент " + by);
+        }
+
+        @Override
+        public void beforeClickOn(WebElement element, WebDriver driver) {
+            logger.info("Клик по элементу " + element);
+        }
+
+        @Override
+        public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
+            logger.info("Изменено значение элемента " + element + "на" + Arrays.toString(keysToSend));
+        }
+
+        @Override
+        public void afterSwitchToWindow(String windowName, WebDriver driver) {
+            logger.info("Переход на станицу " + driver.getTitle());
         }
 
         @Override
@@ -35,7 +55,7 @@ class BrowsersFactory {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.err.println(file.getAbsolutePath());
+            logger.error(file.getAbsolutePath());
         }
     }
 
