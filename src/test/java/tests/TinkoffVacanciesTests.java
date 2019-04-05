@@ -4,8 +4,6 @@ import org.junit.*;
 
 import org.openqa.selenium.*;
 import utils.BaseRunner;
-import utils.CheckBox;
-import utils.Helper;
 import utils.TextInput;
 
 public class TinkoffVacanciesTests extends BaseRunner {
