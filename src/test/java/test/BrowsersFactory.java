@@ -1,4 +1,4 @@
-package utils;
+package test;
 
 import com.google.common.io.Files;
 import org.openqa.selenium.*;

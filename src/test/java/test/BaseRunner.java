@@ -1,3 +1,6 @@
+package test;
+
+import app.Application;
 import org.junit.After;
 import org.junit.Before;
 

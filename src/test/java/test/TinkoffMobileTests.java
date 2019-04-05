@@ -1,39 +1,34 @@
+package test;
+
 import org.junit.Test;
+import pages.GooglePage;
 
 public class TinkoffMobileTests extends BaseRunner {
 
     private static String URL_TARIFFS = "https://www.tinkoff.ru/mobile-operator/tariffs/";
     private static String URL_GOOGLE = "https://www.google.ru/";
 
-    @Test
-    public void switchingBetweenTabs() {
-        app.getPage(URL_GOOGLE);
-        app.selectAutoSubstitutionForRequest("мобайл тинькофф", "мобайл тинькофф тарифы");
-        app.openPageFromSearchResults("Тарифы Тинькофф Мобайла");
-        app.switchToWindow("Тарифы Тинькофф Мобайла");
-        app.switchToWindow("мобайл тинькофф тарифы - Поиск в Google");
-        app.closeCurrentTab();
-        app.switchToMainTab();
-        app.checkPageURL(URL_TARIFFS);
-    }
+//    @Test
+//    public void switchingBetweenTabs() {
+
+//        GooglePage googlePage = app.getGoogle();
+//        googlePage.getPage(GooglePage.getURL(), GooglePage.getTITLE());
+
+
+//        app.getPage(URL_GOOGLE);
+//        app.selectAutoSubstitutionForRequest("мобайл тинькофф", "мобайл тинькофф тарифы");
+//        app.openPageFromSearchResults("Тарифы Тинькофф Мобайла");
+//        app.switchToWindow("Тарифы Тинькофф Мобайла");
+//        app.switchToWindow("мобайл тинькофф тарифы - Поиск в Google");
+//        app.closeCurrentTab();
+//        app.switchToMainTab();
+//        app.checkPageURL(URL_TARIFFS);
+//    }
 //
 //    @Test
 //    public void changeOfRegion() {
-//        driver.get(URL_TARIFFS);
-//        wait.until(d -> d.findElement(By.xpath("//span[@class='MvnoRegionConfirmation__option_v9PfP']"))).click();
-//        wait.until(d ->
-//                d.findElement(By.xpath("//div[contains(@class, 'MvnoRegionConfirmation__title_DOqnW')]"))
-//                        .getText()
-//                        .equals("Москва и Московская область"));
+//        app.getPage(URL_TARIFFS);
 //
-//        wait.until(d -> {
-//            boolean check = false;
-//            d.get(URL_TARIFFS);
-//            if (d.findElement(By.xpath("//div[contains(@class, 'MvnoRegionConfirmation__title_DOqnW')]"))
-//                    .getText()
-//                    .equals("Москва и Московская область")) check = true;
-//            return check;
-//        });
 //
 //        //с дефолтными пакетами сумма не равна
 //        String priceMoscowDef = driver.findElement(By.xpath("//h3")).getText();
@@ -79,7 +74,7 @@ public class TinkoffMobileTests extends BaseRunner {
 //        String priceMoscowMax = driver.findElement(By.xpath("//h3")).getText();
 //        logger.info("Стоимость услуг для Москвы: " + priceMoscowMax);
 //        wait.until(d -> (priceMoscowMax.equals(priceKrasnodarMax)));
-//    }
+    }
 //
 //    @Test
 //    public void activeButton() {
@@ -120,4 +115,4 @@ public class TinkoffMobileTests extends BaseRunner {
 //        checkBox.click("Режим модема (499 ₽)");
 //        checkBox.click("Безлимитные СМС (49 ₽)");
 //    }
-}
+//}

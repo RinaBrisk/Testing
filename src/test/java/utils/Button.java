@@ -1,11 +1,14 @@
 package utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-//public class Button {
-//
-//    public void click(String name){
-//         driver.findElement(By.xpath("//div[text()='" + name + "']/../..")).click();
-//    }
-//}
+public class Button {
+
+    public static void click(WebElement element){
+         element.click();
+    }
+
+    //TODO другие методы
+}
 

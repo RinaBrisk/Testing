@@ -3,7 +3,7 @@
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.interactions.Actions;
 //
-//public class Select extends BaseRunner {
+//public class Select extends test.BaseRunner {
 //
 //    public String valueChoice(String listName, String valueName){
 //        Actions actionsInternet = new Actions(driver);

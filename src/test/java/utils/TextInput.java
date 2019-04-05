@@ -1,21 +1,22 @@
-//package utils;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.Keys;
-//import org.openqa.selenium.WebElement;
-//
-//public class TextInput extends BaseRunner {
-//
-//    public String setText(String xpath, String value) {
-//        driver.findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL, "a", "\b");
-//        driver.findElement(By.xpath(xpath)).sendKeys(value);
-//        driver.findElement(By.xpath(xpath)).sendKeys(Keys.ENTER);
-//        return getText(xpath);
-//    }
-//
-//    public String getText(String xpath) {
-//        WebElement el = driver.findElement(By.xpath(xpath));
-//        return el.getAttribute("value");
-//    }
-//}
-//
+package utils;
+
+import app.Application;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+
+public class TextInput extends Application {
+
+    public static void setText(WebElement element, String value) {
+        element.sendKeys(Keys.CONTROL, "a", "\b");
+        element.sendKeys(value);
+        element.sendKeys(Keys.ENTER);
+    }
+
+    public static String getText(WebElement element)
+    {
+        return element.getAttribute("value");
+    }
+
+    //TODO другие методы
+}
+
