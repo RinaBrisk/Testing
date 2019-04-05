@@ -2,54 +2,48 @@ package test;
 
 import org.junit.Test;
 import pages.GooglePage;
+import pages.TinkoffMobileTariffsPage;
 
-public class TinkoffMobileTests extends BaseRunner {
+public class TinkoffMobileTariffsTests extends BaseRunner {
 
-    private static String URL_TARIFFS = "https://www.tinkoff.ru/mobile-operator/tariffs/";
-    private static String URL_GOOGLE = "https://www.google.ru/";
+    @Test
+    public void switchingBetweenTabs() {
 
-//    @Test
-//    public void switchingBetweenTabs() {
+        GooglePage googlePage = app.getGoogle();
+        googlePage.open();
+        googlePage.selectAutoSubstitutionForRequest("мобайл тинькофф", "мобайл тинькофф тарифы");
+        googlePage.openPageFromSearchResults(TinkoffMobileTariffsPage.getTITLE());
+        TinkoffMobileTariffsPage tariffsPage = app.getMobileTariffs();
+        tariffsPage.switchToWindow(TinkoffMobileTariffsPage.getTITLE());
+        googlePage.switchToWindow("мобайл тинькофф тарифы - Поиск в Google");
+        googlePage.closeCurrentTab();
+        tariffsPage.switchToMainTab();
+        tariffsPage.checkPageURL(TinkoffMobileTariffsPage.getURL());
+    }
 
-//        GooglePage googlePage = app.getGoogle();
-//        googlePage.getPage(GooglePage.getURL(), GooglePage.getTITLE());
+    @Test
+    public void changeOfRegion() {
+        TinkoffMobileTariffsPage tariffsPage = app.getMobileTariffs();
+        tariffsPage.open();
+        tariffsPage.confirmMoscowRegion();
+        tariffsPage.checkCurrentRegion("Москва и Московская область");
+        tariffsPage.open();
+        tariffsPage.checkCurrentRegion("Москва и Московская область");
+        //с дефолтными пакетами сумма не равна
+        String priceMoscowDef = tariffsPage.getCurrentPrice();
+        tariffsPage.changeRegion("Краснодарский кр.");
+        String priceKrasnodarDef = tariffsPage.getCurrentPrice();
+        tariffsPage.checkPriceIsDifferent(priceMoscowDef, priceKrasnodarDef);
+        //c максимальными пакетами сумма равна
+        tariffsPage.setMaximumServices();
+        String priceKrasnodarMax = tariffsPage.getCurrentPrice();
+        tariffsPage.changeRegion("Москва и Московская обл.");
+        tariffsPage.setMaximumServices();
+        String priceMoscowMax = tariffsPage.getCurrentPrice();
+        tariffsPage.checkPriceIsEquals(priceMoscowMax, priceKrasnodarMax);
+    }
 
 
-//        app.getPage(URL_GOOGLE);
-//        app.selectAutoSubstitutionForRequest("мобайл тинькофф", "мобайл тинькофф тарифы");
-//        app.openPageFromSearchResults("Тарифы Тинькофф Мобайла");
-//        app.switchToWindow("Тарифы Тинькофф Мобайла");
-//        app.switchToWindow("мобайл тинькофф тарифы - Поиск в Google");
-//        app.closeCurrentTab();
-//        app.switchToMainTab();
-//        app.checkPageURL(URL_TARIFFS);
-//    }
-//
-//    @Test
-//    public void changeOfRegion() {
-//        app.getPage(URL_TARIFFS);
-//
-//
-//        //с дефолтными пакетами сумма не равна
-//        String priceMoscowDef = driver.findElement(By.xpath("//h3")).getText();
-//        logger.info("Стоимость услуг для Москвы: " + priceMoscowDef);
-//        driver.findElement(By.xpath("//div[contains(@class, 'MvnoRegionConfirmation__title_DOqnW')]")).click();
-//        By listItems = By.xpath("//div[contains(@class,'MobileOperatorRegionsPopup__listParts_16aoL')]/div[2]/div");
-//        List<WebElement> elements = driver.findElements(listItems);
-//        wait.until(d -> {
-//            for (WebElement el : elements) {
-//                if (el.getText().equals("Краснодарский кр.")) {
-//                    logger.info("Выбранный район: " + el.getText());
-//                    el.click();
-//                    break;
-//                }
-//            }
-//            String priceKrasnodarDef = d.findElement(By.xpath("//h3")).getText();
-//            logger.info("Стоимость услуг для Краснодарского края: " + priceKrasnodarDef);
-//            boolean check = false;
-//            if (!priceMoscowDef.equals(priceKrasnodarDef)) check = true;
-//            return check;
-//        });
 //
 //        //c максимальными пакетами сумма равна
 //        setMaxPackets();

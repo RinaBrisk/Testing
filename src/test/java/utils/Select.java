@@ -1,20 +1,23 @@
-//package utils;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.interactions.Actions;
-//
-//public class Select extends test.BaseRunner {
-//
-//    public String valueChoice(String listName, String valueName){
-//        Actions actionsInternet = new Actions(driver);
-//        actionsInternet.click(driver.findElement(By.xpath("//div[@class='ui-select_close ui-select_changed']" +
-//                "//span[text()='" + listName + "']/../../div[@class='ui-select__additional']")))
-//                .click(driver.findElement(By.xpath("//span[text()='" + valueName + "']/..")))
-//                .perform();
-//        return getCurrentValue(listName);
-//    }
-//
-//    public String getCurrentValue(String listName){
-//        return driver.findElement(By.xpath("//span[text()='" + listName + "']/../div/span[@class='ui-select__title-flex-text']")).getText();
-//    }
-//}
+package utils;
+
+import app.Application;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class Select extends Application {
+
+    public static boolean valueChoice(WebElement listStatus, WebElement listOpen, WebElement element) {
+        Actions actionsInternet = new Actions(driver);
+        actionsInternet
+                .click(listOpen)
+                .click(element)
+                .perform();
+        return (getCurrentValue(listStatus).equals(element.getText()));
+    }
+
+    public static String getCurrentValue(WebElement list) {
+        return list.getText();
+    }
+
+    //TODO другие методы
+}

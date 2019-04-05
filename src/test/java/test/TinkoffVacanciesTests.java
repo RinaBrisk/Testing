@@ -8,7 +8,7 @@ public class TinkoffVacanciesTests extends BaseRunner {
     @Test
     public void testEmptyValue() {
         TinkoffVacanciesPage vacancies = app.getVacancies();
-        vacancies.getPage(TinkoffVacanciesPage.getURL(), TinkoffVacanciesPage.getTITLE());
+        vacancies.open();
         vacancies.clickTermsOfUse();
         vacancies.clickSendBtn();
         vacancies.checkNameErrorField("Поле обязательное");
@@ -24,7 +24,7 @@ public class TinkoffVacanciesTests extends BaseRunner {
     @Test
     public void testInvalidValue() {
         TinkoffVacanciesPage vacancies = app.getVacancies();
-        vacancies.getPage(TinkoffVacanciesPage.getURL(), TinkoffVacanciesPage.getTITLE());
+        vacancies.open();
         vacancies.typeNameField("Наташа44");
         vacancies.clickSendBtn();
         vacancies.checkNameErrorField("Допустимо использовать только буквы русского алфавита и дефис");
