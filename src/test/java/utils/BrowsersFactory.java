@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-class BrowsersFactory {
+public class BrowsersFactory {
 
     public static class MyListener extends AbstractWebDriverEventListener {
 
@@ -59,7 +59,7 @@ class BrowsersFactory {
         }
     }
 
-    static WebDriver buildDriver(String browserName) {
+    public static WebDriver buildDriver(String browserName) {
         switch (browserName) {
 
             case "chrome_invisible":
