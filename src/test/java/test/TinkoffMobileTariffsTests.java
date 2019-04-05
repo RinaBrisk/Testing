@@ -42,33 +42,6 @@ public class TinkoffMobileTariffsTests extends BaseRunner {
         String priceMoscowMax = tariffsPage.getCurrentPrice();
         tariffsPage.checkPriceIsEquals(priceMoscowMax, priceKrasnodarMax);
     }
-
-
-//
-//        //c максимальными пакетами сумма равна
-//        setMaxPackets();
-//        String priceKrasnodarMax = driver.findElement(By.xpath("//h3")).getText();
-//        logger.info("Стоимость услуг для Краснодарского края: " + priceKrasnodarMax);
-//
-//        driver.findElement(By.xpath("//div[contains(@class, 'MvnoRegionConfirmation__title_DOqnW')]")).click();
-//        listItems = By.xpath("//div[contains(@class,'MobileOperatorRegionsPopup__listParts_16aoL')]/div[1]/div");
-//        List<WebElement> regions = driver.findElements(listItems);
-//        wait.until(d -> {
-//            boolean check = false;
-//            for (WebElement el : regions) {
-//                if (el.getText().equals("Москва и Московская обл.")) {
-//                    el.click();
-//                    check = true;
-//                    break;
-//                }
-//            }
-//            return check;
-//        });
-//        setMaxPackets();
-//        String priceMoscowMax = driver.findElement(By.xpath("//h3")).getText();
-//        logger.info("Стоимость услуг для Москвы: " + priceMoscowMax);
-//        wait.until(d -> (priceMoscowMax.equals(priceKrasnodarMax)));
-    }
 //
 //    @Test
 //    public void activeButton() {
@@ -99,14 +72,4 @@ public class TinkoffMobileTariffsTests extends BaseRunner {
 //            return check;
 //        });
 //    }
-//
-//    private void setMaxPackets() {
-//        Select select = new Select();
-//        wait.until(d -> select.valueChoice("Интернет", "Безлимитный интернет").equals("Безлимитный интернет"));
-//        wait.until(d -> select.valueChoice("Звонки", "Безлимитные минуты").equals("Безлимитные минуты"));
-//
-//        CheckBox checkBox = new CheckBox();
-//        checkBox.click("Режим модема (499 ₽)");
-//        checkBox.click("Безлимитные СМС (49 ₽)");
-//    }
-//}
+}
