@@ -1,11 +1,15 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Button;
 import utils.CheckBox;
 import utils.Select;
+import utils.TextInput;
+
 
 import java.util.List;
 
@@ -38,29 +42,17 @@ public class TinkoffMobileTariffsPage extends Page{
     @FindBy(xpath = "//span[@class='MvnoRegionConfirmation__option_v9PfP']")
     WebElement confirmMoscowRegion;
 
-    @FindBy(xpath = "//span[text()='Интернет']/parent::div/following-sibling::div")
-    WebElement internetSelectOpen;
+    @FindBy(xpath = "//div[@class='ui-input__column']//span[text()='Фамилия, имя и отчество']/ancestor::div/input")
+    WebElement fullName;
 
-    @FindBy(xpath = "//span[text()='Интернет']/parent::div//span[contains(@class,'flex-text')]")
-    WebElement internetSelectStatus;
+    @FindBy(xpath = "//div[@class='ui-input__column']//span[text()='Контактный телефон']/ancestor::div/input[@name='phone_mobile']")
+    WebElement phone;
 
-    @FindBy(xpath = "//span[text()='Звонки']/parent::div/following-sibling::div")
-    WebElement callSelectOpen;
+    @FindBy(xpath = "//div[text()='Заказать сим-карту']//ancestor::button")
+    WebElement orderSIM;
 
-    @FindBy(xpath = "//span[text()='Звонки']/parent::div//span[contains(@class,'flex-text')]")
-    WebElement callSelectStatus;
-
-    @FindBy(xpath = "//span[text()='Безлимитный интернет']")
-    WebElement unlimitedInternetSelectPosition;
-
-    @FindBy(xpath = "//span[text()='Безлимитные минуты']")
-    WebElement unlimitedMinutesSelectPosition;
-
-    @FindBy(xpath = "//div[contains(@class,'CheckboxSet')]//label[contains(text(),'Режим модема')]")
-    WebElement modemModeCheckBox;
-
-    @FindBy(xpath = "//div[contains(@class,'CheckboxSet')]//label[contains(text(),'Безлимитные СМС')]")
-    WebElement unlimitedSMSCheckBox;
+    @FindBy(xpath = "//div[contains(@class, 'UIAppointment__container_3A8ha UIAppointment__container_highlighted_3lFo8')]")
+    WebElement scheduleAppointment;
 
     public void open() {
         driver.navigate().to(URL);
@@ -99,12 +91,78 @@ public class TinkoffMobileTariffsPage extends Page{
         return price.getText();
     }
 
-    public void setMaximumServices(){
-        wait.until(d -> Select.valueChoice(internetSelectStatus, internetSelectOpen, unlimitedInternetSelectPosition));
-        wait.until(d -> Select.valueChoice(callSelectStatus, callSelectOpen, unlimitedMinutesSelectPosition));
+    public void typeNameField(String value){
+        wait.until(d -> {
+            boolean check = false;
+            TextInput name_ti = new TextInput(fullName);
+            if(name_ti.setText(value)) check = true;
+            return check;
+        });
+    }
 
-        CheckBox.click(modemModeCheckBox);
-        CheckBox.click(unlimitedSMSCheckBox);
+    public void typePhoneField(String value){
+        wait.until(d -> {
+            TextInput phone_ti = new TextInput(phone);
+            phone_ti.setText(value);
+            return true;
+        });
+    }
+
+    public void orderSIMClick(){
+        Button orderSIM_btn = new Button(orderSIM);
+        wait.until(d -> orderSIM_btn.isEnabled());
+        orderSIM_btn.click();
+    }
+
+    public void checkScheduleAppointmentIsDisplayed(){
+        wait.until(d -> scheduleAppointment.isDisplayed());
+    }
+
+    private WebElement getSelectElementForGetTitle(String selectName){
+        return driver.findElement(By.xpath("//span[text()='" + selectName + "']/parent::div//span[contains(@class,'flex-text')]"));
+    }
+
+    private WebElement getSelectElementForOpen(String selectName){
+        return driver.findElement(By.xpath("//span[text()='" + selectName + "']/parent::div/following-sibling::div"));
+    }
+
+    private WebElement getSelectOptionElement(String optionName){
+        return driver.findElement(By.xpath("//span[text()='" + optionName + "']"));
+    }
+
+    private WebElement getCheckBoxElement(String checkBoxName){
+        return driver.findElement(By.xpath("//div[contains(@class,'CheckboxSet')]//label[contains(text(),'" + checkBoxName + "')]"));
+    }
+
+    public void setMaximumServices(){
+        Select internet = new Select();
+        Select calls = new Select();
+        wait.until(d -> internet.valueChoice(getSelectElementForOpen("Интернет"),
+                                             getSelectOptionElement("Безлимитный интернет"),
+                                             getSelectElementForGetTitle("Интернет")));
+        wait.until(d -> calls.valueChoice(getSelectElementForOpen("Звонки"),
+                                          getSelectOptionElement("Безлимитные минуты"),
+                                          getSelectElementForGetTitle("Звонки")));
+
+        CheckBox modemMode = new CheckBox(getCheckBoxElement("Режим модема"));
+        CheckBox unlimitedSMS = new CheckBox(getCheckBoxElement("Безлимитные СМС"));
+        modemMode.click();
+        unlimitedSMS.click();
+    }
+
+    public void disableAllServices(){
+        Select internet = new Select();
+        Select calls = new Select();
+        wait.until(d -> internet.valueChoice(getSelectElementForOpen("Интернет"),
+                                             getSelectOptionElement("0 ГБ"),
+                                             getSelectElementForGetTitle("Интернет")));
+        wait.until(d -> calls.valueChoice(getSelectElementForOpen("Звонки"),
+                                          getSelectOptionElement("0 минут"),
+                                          getSelectElementForGetTitle("Звонки")));
+        CheckBox messenger = new CheckBox(getCheckBoxElement("Мессенджеры"));
+        CheckBox socialNetwork = new CheckBox(getCheckBoxElement("Социальные сети"));
+        messenger.click();
+        socialNetwork.click();
     }
 
     public void checkPriceIsDifferent(String price1, String price2){
@@ -114,6 +172,5 @@ public class TinkoffMobileTariffsPage extends Page{
     public void checkPriceIsEquals(String price1, String price2){
         wait.until(d -> (price1.equals(price2)));
     }
-
 
 }

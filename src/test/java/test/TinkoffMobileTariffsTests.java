@@ -8,7 +8,6 @@ public class TinkoffMobileTariffsTests extends BaseRunner {
 
     @Test
     public void switchingBetweenTabs() {
-
         GooglePage googlePage = app.getGoogle();
         googlePage.open();
         googlePage.selectAutoSubstitutionForRequest("мобайл тинькофф", "мобайл тинькофф тарифы");
@@ -42,34 +41,17 @@ public class TinkoffMobileTariffsTests extends BaseRunner {
         String priceMoscowMax = tariffsPage.getCurrentPrice();
         tariffsPage.checkPriceIsEquals(priceMoscowMax, priceKrasnodarMax);
     }
-//
-//    @Test
-//    public void activeButton() {
-//        driver.get(URL_TARIFFS);
-//        driver.manage().timeouts().setScriptTimeout(4, TimeUnit.SECONDS);
-//        Select select = new Select();
-//        wait.until(d -> select.valueChoice("Интернет", "0 ГБ").equals("0 ГБ"));
-//        wait.until(d -> select.valueChoice( "Звонки", "0 минут").equals("0 минут"));
-//
-//        CheckBox checkBox = new CheckBox();
-//        checkBox.click("Мессенджеры (59 ₽)");
-//        checkBox.click("Социальные сети (59 ₽)");
-//
-//        String price = driver.findElement(By.xpath("//h3")).getText();
-//        logger.info(price);
-//        wait.until(d -> price.equals("Общая цена: 0 ₽"));
-//
-//        TextInput textInput = new TextInput();
-//        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Фамилия, имя и отчество']/parent::span/parent::div/input", "Сергеева Рина").equals("Сергеева Рина"));
-//        wait.until(d -> textInput.setText("//div[@class='ui-input__column']//span[text()='Контактный телефон']/parent::span/parent::div/input[@name='phone_mobile']", "9009090909").equals("+7(900) 909-09-09"));
-//
-//        Button button = new Button();
-//        button.click("Заказать сим-карту");
-//        wait.until(d -> {
-//            boolean check = false;
-//            WebElement el = driver.findElement(By.xpath("//div[contains(@class, 'UIAppointment__container_3A8ha UIAppointment__container_highlighted_3lFo8')]"));
-//            if(el.isDisplayed()) check = true;
-//            return check;
-//        });
-//    }
+
+    @Test
+    public void activeButton() {
+        TinkoffMobileTariffsPage tariffsPage = app.getMobileTariffs();
+        tariffsPage.open();
+        tariffsPage.disableAllServices();
+        String price = tariffsPage.getCurrentPrice();
+        tariffsPage.checkPriceIsEquals(price,"Общая цена: 0 ₽");
+        tariffsPage.typeNameField("Рина Сергеева");
+        tariffsPage.typePhoneField("9850913459");
+        tariffsPage.orderSIMClick();
+        tariffsPage.checkScheduleAppointmentIsDisplayed();
+    }
 }

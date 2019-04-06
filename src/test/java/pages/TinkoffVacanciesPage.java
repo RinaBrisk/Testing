@@ -38,7 +38,7 @@ public class TinkoffVacanciesPage extends Page {
     WebElement termsOfUse;
 
     @FindBy(xpath = "//span[contains(@class, 'Button__content_3MlYx')]")
-    WebElement sendBtn;
+    WebElement send;
 
     @FindBy(xpath = "//div[contains(@class, 'ui-suggest')]/following-sibling::div")
     WebElement nameErrorMsg;
@@ -68,45 +68,57 @@ public class TinkoffVacanciesPage extends Page {
 
     public void typeNameField(String value) {
         wait.until(d -> {
-            TextInput.setText(name, value);
-            return true;
+            boolean check = false;
+            TextInput name_ti = new TextInput(name);
+            if(name_ti.setText(value))check = true;
+            return check;
         });
     }
 
     public void typeBirthdayField(String value) {
         wait.until(d -> {
-            TextInput.setText(birthday, value);
-            return true;
+            boolean check = false;
+            TextInput birthday_ti = new TextInput(birthday);
+            if(birthday_ti.setText(value))check = true;
+            return check;
         });
     }
 
     public void typeCityField(String value) {
         wait.until(d -> {
-            TextInput.setText(city, value);
-            return true;
+            boolean check = false;
+            TextInput city_ti = new TextInput(city);
+            if(city_ti.setText(value))check = true;
+            return check;
         });
     }
 
     public void typeEmailField(String value) {
         wait.until(d -> {
-            TextInput.setText(email, value);
-            return true;
+            boolean check = false;
+            TextInput email_ti = new TextInput(email);
+            if(email_ti.setText(value))check = true;
+            return check;
         });
     }
 
     public void typePhoneField(String value) {
         wait.until(d -> {
-            TextInput.setText(phone, value);
-            return true;
+            boolean check = false;
+            TextInput phone_ti = new TextInput(phone);
+            if(phone_ti.setText(value))check = true;
+            return check;
         });
     }
 
     public void clickTermsOfUse(){
-        CheckBox.click(termsOfUse);
+        CheckBox terms = new CheckBox(termsOfUse);
+        terms.click();
     }
 
     public void clickSendBtn(){
-        Button.click(sendBtn);
+        Button send_btn = new Button(send);
+        send_btn.click();
     }
 
     public void checkNameErrorField(String error){

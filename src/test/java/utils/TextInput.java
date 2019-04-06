@@ -1,20 +1,26 @@
 package utils;
 
-import app.Application;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-public class TextInput extends Application {
+public class TextInput{
 
-    public static void setText(WebElement element, String value) {
-        element.sendKeys(Keys.CONTROL, "a", "\b");
-        element.sendKeys(value);
-        element.sendKeys(Keys.ENTER);
+    private WebElement textInput;
+
+    public TextInput(WebElement textInput){
+        this.textInput = textInput;
     }
 
-    public static String getText(WebElement element)
+    public boolean setText(String value) {
+        textInput.sendKeys(Keys.CONTROL, "a", "\b");
+        textInput.sendKeys(value);
+        textInput.sendKeys(Keys.ENTER);
+        return getText().equals(value);
+    }
+
+    public String getText()
     {
-        return element.getAttribute("value");
+        return textInput.getAttribute("value");
     }
 
     //TODO другие методы
