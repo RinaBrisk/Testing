@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.TinkoffVacanciesTests" time="7.218" tests="2" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.TinkoffVacanciesTests" time="8.024" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_141\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\Rina\AppData\Local\Temp\surefire1762644222160867726\surefirebooter3961880982481360530.jar C:\Users\Rina\AppData\Local\Temp\surefire1762644222160867726 2019-04-07T20-06-51_545-jvmRun1 surefire8279840353296452456tmp surefire_01683478688079258335tmp"/>
+    <property name="sun.java.command" value="C:\Users\Rina\AppData\Local\Temp\surefire5180575226999903354\surefirebooter1589428350916718870.jar C:\Users\Rina\AppData\Local\Temp\surefire5180575226999903354 2019-04-07T20-21-35_426-jvmRun1 surefire656224879562373466tmp surefire_05902253755791862015tmp"/>
     <property name="surefire.test.class.path" value="C:\Programming\Testing\target\test-classes;C:\Programming\Testing\target\classes;C:\Users\Rina\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Rina\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-java\3.14.0\selenium-java-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-api\3.14.0\selenium-api-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\3.14.0\selenium-chrome-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\3.14.0\selenium-edge-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\3.14.0\selenium-firefox-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\3.14.0\selenium-ie-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-opera-driver\3.14.0\selenium-opera-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\3.14.0\selenium-remote-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\3.14.0\selenium-safari-driver-3.14.0.jar;C:\Users\Rina\.m2\repository\org\seleniumhq\selenium\selenium-support\3.14.0\selenium-support-3.14.0.jar;C:\Users\Rina\.m2\repository\net\bytebuddy\byte-buddy\1.8.15\byte-buddy-1.8.15.jar;C:\Users\Rina\.m2\repository\org\apache\commons\commons-exec\1.3\commons-exec-1.3.jar;C:\Users\Rina\.m2\repository\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;C:\Users\Rina\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Rina\.m2\repository\com\google\guava\guava\25.0-jre\guava-25.0-jre.jar;C:\Users\Rina\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\Rina\.m2\repository\org\checkerframework\checker-compat-qual\2.0.0\checker-compat-qual-2.0.0.jar;C:\Users\Rina\.m2\repository\com\google\errorprone\error_prone_annotations\2.1.3\error_prone_annotations-2.1.3.jar;C:\Users\Rina\.m2\repository\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;C:\Users\Rina\.m2\repository\org\codehaus\mojo\animal-sniffer-annotations\1.14\animal-sniffer-annotations-1.14.jar;C:\Users\Rina\.m2\repository\org\apache\httpcomponents\httpclient\4.5.5\httpclient-4.5.5.jar;C:\Users\Rina\.m2\repository\org\apache\httpcomponents\httpcore\4.4.9\httpcore-4.4.9.jar;C:\Users\Rina\.m2\repository\com\squareup\okhttp3\okhttp\3.10.0\okhttp-3.10.0.jar;C:\Users\Rina\.m2\repository\com\squareup\okio\okio\1.14.1\okio-1.14.1.jar;C:\Users\Rina\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\Rina\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\Rina\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Rina"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\Rina\AppData\Local\Temp\surefire1762644222160867726\surefirebooter3961880982481360530.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Rina\AppData\Local\Temp\surefire5180575226999903354\surefirebooter1589428350916718870.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_141\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_141\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_141\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -46,7 +46,6 @@
     <property name="localRepository" value="C:\Users\Rina\.m2\repository"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\Rina\AppData\Local\Temp\"/>
-    <property name="test.case" value="switchingBetweenTabs"/>
     <property name="java.version" value="1.8.0_141"/>
     <property name="user.dir" value="C:\Programming\Testing"/>
     <property name="os.arch" value="amd64"/>
@@ -61,19 +60,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testEmptyValue" classname="test.TinkoffVacanciesTests" time="3.444">
-    <failure message="expected:&lt;[Поле обязательное]&gt; but was:&lt;[Допустимо использовать только буквы русского алфавита и дефис]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[Поле обязательное]> but was:<[Допустимо использовать только буквы русского алфавита и дефис]>
-	at test.TinkoffVacanciesTests.testEmptyValue(TinkoffVacanciesTests.java:15)
-]]></failure>
-    <system-out><![CDATA[20:07:24.390 [pool-1-thread-3] INFO test.BrowsersFactory - Обращение к элементу By.xpath: //div[@class='ui-checkbox__check']
-20:07:24.482 [pool-1-thread-3] INFO test.BrowsersFactory - Найден элемент By.xpath: //div[@class='ui-checkbox__check']
-20:07:24.482 [pool-1-thread-3] INFO test.BrowsersFactory - Клик по элементу [[ChromeDriver: chrome on XP (95d02b5f943b8517ced56738c8ee2ceb)] -> xpath: //div[@class='ui-checkbox__check']]
-20:07:24.789 [pool-1-thread-3] INFO test.BrowsersFactory - Обращение к элементу By.xpath: //span[contains(@class, 'Button__content_3MlYx')]
-20:07:24.815 [pool-1-thread-3] INFO test.BrowsersFactory - Найден элемент By.xpath: //span[contains(@class, 'Button__content_3MlYx')]
-20:07:24.815 [pool-1-thread-3] INFO test.BrowsersFactory - Клик по элементу [[ChromeDriver: chrome on XP (95d02b5f943b8517ced56738c8ee2ceb)] -> xpath: //span[contains(@class, 'Button__content_3MlYx')]]
-20:07:25.309 [pool-1-thread-3] INFO test.BrowsersFactory - Обращение к элементу By.xpath: //div[contains(@class, 'ui-suggest')]/following-sibling::div
-20:07:25.360 [pool-1-thread-3] INFO test.BrowsersFactory - Найден элемент By.xpath: //div[contains(@class, 'ui-suggest')]/following-sibling::div
-]]></system-out>
-  </testcase>
-  <testcase name="testInvalidValue" classname="test.TinkoffVacanciesTests" time="7.212"/>
+  <testcase name="testEmptyValue" classname="test.TinkoffVacanciesTests" time="2.685"/>
+  <testcase name="testInvalidValue" classname="test.TinkoffVacanciesTests" time="5.338"/>
 </testsuite>
