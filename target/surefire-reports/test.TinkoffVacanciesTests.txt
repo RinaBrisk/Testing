@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: test.TinkoffVacanciesTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.218 s <<< FAILURE! - in test.TinkoffVacanciesTests
+testEmptyValue(test.TinkoffVacanciesTests)  Time elapsed: 3.444 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Поле обязательное]> but was:<[Допустимо использовать только буквы русского алфавита и дефис]>
+	at test.TinkoffVacanciesTests.testEmptyValue(TinkoffVacanciesTests.java:15)
+

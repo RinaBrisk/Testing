@@ -104,10 +104,9 @@ public class TinkoffVacanciesPage extends Page {
 
     public void typePhoneField(String value) {
         wait.until(d -> {
-            boolean check = false;
             TextInput phone_ti = new TextInput(phone);
-            if(phone_ti.setText(value))check = true;
-            return check;
+            phone_ti.setText(value);
+            return true;
         });
     }
 

@@ -1,3 +1,13 @@
-C:\Programming\Testing\src\test\java\BaseRunner.java
-C:\Programming\Testing\src\test\java\BrowsersFactory.java
-C:\Programming\Testing\src\test\java\WebTests.java
+C:\Programming\Testing\src\test\java\app\Application.java
+C:\Programming\Testing\src\test\java\test\BaseRunner.java
+C:\Programming\Testing\src\test\java\utils\Button.java
+C:\Programming\Testing\src\test\java\utils\Select.java
+C:\Programming\Testing\src\test\java\pages\TinkoffMobileTariffsPage.java
+C:\Programming\Testing\src\test\java\utils\CheckBox.java
+C:\Programming\Testing\src\test\java\pages\TinkoffVacanciesPage.java
+C:\Programming\Testing\src\test\java\test\TinkoffMobileTariffsTests.java
+C:\Programming\Testing\src\test\java\utils\TextInput.java
+C:\Programming\Testing\src\test\java\test\BrowsersFactory.java
+C:\Programming\Testing\src\test\java\pages\GooglePage.java
+C:\Programming\Testing\src\test\java\test\TinkoffVacanciesTests.java
+C:\Programming\Testing\src\test\java\pages\Page.java

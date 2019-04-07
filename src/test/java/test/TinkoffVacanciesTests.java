@@ -5,6 +5,7 @@ import pages.TinkoffVacanciesPage;
 
 public class TinkoffVacanciesTests extends BaseRunner {
 
+
     @Test
     public void testEmptyValue() {
         TinkoffVacanciesPage vacancies = app.getVacancies();

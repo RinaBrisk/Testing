@@ -17,10 +17,8 @@ public class BaseRunner {
         }
         app = new Application();
         threadApp.set(app);
-    }
-
-    @After
-    public void tearDown() {
-        app.quit();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            app.quit();
+        }));
     }
 }
