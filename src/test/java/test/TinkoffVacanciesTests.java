@@ -18,7 +18,6 @@ public class TinkoffVacanciesTests extends BaseRunner {
         vacancies.checkPhoneErrorField("Поле обязательное");
         vacancies.checkCVErrorField("Поле обязательное");
         vacancies.checkTermsOfUseErrorField("Поле обязательное");
-
     }
 
     @Test
